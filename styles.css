@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #24272E;
+}
+
+header {
+    background: #FFFFFF;
+    padding: 20px;
+}
+
+header > h1 {
+    color: #25272E;
+    text-align: center;
+    font-family: Asap, sans-serif;
+}
+
+.score-board {
+    margin: 20px auto; /* 20px at top and bottom; center it */
+    padding: 15px 20px;
+    border: 3px solid white;
+    border-radius: 4px;
+    width: 250px;
+    color: white;
+    font-size: 46px;
+    text-align: center;
+    font-family: Asap, sans-serif;
+    position: relative; /* Must be something other than static or inherit; 
+                           this allows us to place labels relative to scoreboard's position */
+}
+
+.player {
+    background: #E2584D;
+    color: white;
+    font-size: 20px;
+    padding: 2px 10px;
+    font-family: Asap, sans-serif;
+}
+
+#you-label { /* position to browser's top-left corner */
+    position: absolute;
+    top: 30px;
+    left: -30px;
+}
+
+#comp-label { /* position to browser's top-left corner */
+    position: absolute;
+    top: 30px;
+    right: -55px;
+}
+
+.result {
+    font-size: 40px;
+    color: white;
+
+}
+
+.result > p {
+    text-align: center;
+    font-family: Asap, sans-serif;
+    font-weight: bold;
+}
+
+.choices {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.choice{
+    display: inline-block; /* makes horizontal */
+    border: 4px solid white;
+    border-radius: 50%; /* Half of width makes border circular */
+    padding: 25px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.choice:hover {
+    background: #381614;
+    cursor: pointer;
+}
+
+#tagline {
+    text-align: center;
+    color: white;
+    font-family: Asap, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+#credit {
+    text-align: center;
+    color: white;
+    font-family: Asap, sans-serif;
+    font-style: italic;
+}
