@@ -12,6 +12,9 @@ const rock_div = document.getElementById('rock');
 const paper_div = document.getElementById('paper');
 const scissors_div = document.getElementById('scissors');
 
+const winner_div = document.getElementById('winner');
+const instructions_div = document.getElementById('instructions');
+
 // Generate computer selection: Based on random number, assign Rock, Paper or Scissors.
 function getComputerChoice() {
     const choices = ['Rock', 'Paper', 'Scissors'];
@@ -26,7 +29,7 @@ function playerWins(playerChoice, computerChoice) {
     // Update scoreboard
     playerScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
-    result_p.innerHTML = `${playerChoice}😁 beats ${computerChoice}💻. You win!`;
+    result_p.innerHTML = `${playerChoice}😁 beats ${computerChoice}💻.`;
 }
 
 // What to do if computer wins
@@ -35,7 +38,7 @@ function computerWins(playerChoice, computerChoice) {
     // Update scoreboard
     playerScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
-    result_p.innerHTML = `${computerChoice}💻 beats ${playerChoice}🥺. Computer wins.`;
+    result_p.innerHTML = `${computerChoice}💻 beats ${playerChoice}🥺.`;
 }
 
 // What to do if it's a tie
@@ -43,9 +46,31 @@ function tie(playerChoice, computerChoice) {
     result_p.innerHTML = `${playerChoice}😐 ties with ${computerChoice}💻.`;
 }
 
+// Checks if game is over
+function isGameOver() {
+    if (playerScore === 5 || computerScore === 5) {
+        return true;
+    }
+    return false;
+}
 
+// Determines winner of the game
+function announceWinner() {
+    if (playerScore === 5) {
+        winner_div.innerHTML = `You win! 🥳 Reload page to play again.`;
+    } else if (computerScore === 5) {
+        winner_div.innerHTML = `Computer wins. 💻 Reload page to play again.`;
+    }
+}
+
+function hideInstructions() {
+    instructions_div.style.visibility = 'hidden';
+}
+
+// Determines winner of the round
 function game(playerChoice) {
     const computerChoice = getComputerChoice();
+    
     switch (playerChoice + computerChoice) {
         case 'RockScissors':
         case 'ScissorsPaper':
@@ -63,6 +88,11 @@ function game(playerChoice) {
             tie(playerChoice, computerChoice);
             break;
     }
+
+    if (isGameOver) {
+        hideInstructions();
+        announceWinner();        
+    }    
 }
 
 // Adds event listener to the clicking of player's three choices
